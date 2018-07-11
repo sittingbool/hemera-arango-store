@@ -15,6 +15,10 @@ function hemeraArangoStore(hemera, opts, done) {
   const Joi = hemera.joi
 
   const getDb = req => req.database || opts.database.name
+  
+  if ( opts.authentication && typeof opts.authentication === 'object' && opts.authentication.user && opts.authentication.password ) {
+    arangodb.useBasicAuth(opts.authentication.user, opts.authentication.password)
+  }
 
   // Updates the URL list by requesting a list of all coordinators in the cluster
   setInterval(() => acquireHostList(), opts.acquireHostListInterval)
