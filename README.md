@@ -44,6 +44,10 @@ hemera.use(require('hemera-arango-store'), {
   database: {
     url: 'http://127.0.0.1:8529',
     name: 'test' // default database
+  },
+  authentication: { // only required if your server uses authentication
+    user: 'myuser',
+    password: 'mypassword'
   }
 })
 ```
